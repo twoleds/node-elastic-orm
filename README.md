@@ -1,4 +1,4 @@
-# node-elastic
+# node-elastic-orm
 An alternative ElasticSearch client for NodeJS.
 
 ## Documentation
