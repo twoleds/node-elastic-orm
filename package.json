@@ -1,0 +1,17 @@
+{
+  "name": "node-elastic",
+  "version": "0.1.0",
+  "description": "An alternative ElasticSearch client for NodeJS.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twoleds/node-elastic.git"
+  },
+  "author": "Jaroslav Kuba",
+  "license": "GNU GPL v3.0",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node" : ">=0.12.0"
+  }
+}
