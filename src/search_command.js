@@ -36,7 +36,15 @@ SearchCommand.prototype.execute = function (client) {
         client.execute("POST", path, self._query, self._params)
             .then(JSON.parse)
             .then(function (result) {
-                return result["hits"];
+                if (typeof result.error !== "undefined") {
+                    throw new Error(result.error);
+                }
+                return {
+                    hits: result["hits"]['hits'],
+                    total: result['hits']['total'],
+                    max_score: result['hits']['max_score'],
+                    aggregations: result['aggregations']
+                };
             })
             .then(resolve).catch(reject);
     });

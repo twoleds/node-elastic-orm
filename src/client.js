@@ -25,7 +25,7 @@ Client.prototype.execute = function (method, path, data, params) {
     var self = this;
     return new Promise(function (resolve, reject) {
 
-        if (typeof params !== "object" && params !== null) {
+        if (typeof params === "object" && params !== null) {
             path += "?" + querystring.stringify(params);
         }
 

@@ -36,7 +36,7 @@ CreateCommand.prototype.execute = function (client) {
     var self = this;
     return new Promise(function (resolve, reject) {
         self._check();
-        var path = "/" + self._index + "/" + self._type + "/" + self._id + "/_create";
+	    var path = "/" + self._index + "/" + self._type + "/" + self._id + "/_create";
         client.execute("POST", path, self._source, self._params)
             .then(JSON.parse)
             .then(resolve).catch(reject);

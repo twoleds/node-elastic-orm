@@ -22,12 +22,16 @@ UpdateCommand.prototype.constructor = UpdateCommand;
 
 UpdateCommand.prototype._bulk = function (buffer) {
     this._check();
+    var update = {
+        "_index": this._index,
+        "_type": this._type,
+        "_id": this._id
+    };
+    if (this._params !== null && typeof this._params['routing'] !== "undefined") {
+        update.routing = this._params['routing'];
+    }
     buffer.push(JSON.stringify({
-        "update": {
-            "_index": this._index,
-            "_type": this._type,
-            "_id": this._id
-        }
+        "update": update
     }));
     buffer.push("{\"doc\":" + this._source + "}");
 };
