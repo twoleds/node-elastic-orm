@@ -37,18 +37,18 @@ Client.prototype.execute = function (method, path, data, params) {
         };
 
         var request = http.request(options, function (response) {
-            var content = "";
+            var content = [];
 
             response.on("error", function (error) {
                 reject(error);
             });
 
             response.on("data", function (data) {
-                content += data;
+                content.push(data);
             });
 
             response.on("end", function () {
-                resolve(content);
+                resolve(Buffer.concat(content).toString());
             });
 
         });
